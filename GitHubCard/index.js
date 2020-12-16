@@ -1,8 +1,13 @@
+import axios from 'axios';
+
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+axios.get('https://api.github.com/users/CleverOscar').then( response => 
+  console.log(response)
+).catch(err => console.log(err))
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -41,7 +46,7 @@ const followersArray = [];
         <p class="username">{users user name}</p>
         <p>Location: {users location}</p>
         <p>Profile:
-          <a href={address to users github page}>{address to users github page}</a>
+          <a href={address to users github page}</a>
         </p>
         <p>Followers: {users followers count}</p>
         <p>Following: {users following count}</p>
@@ -49,6 +54,65 @@ const followersArray = [];
       </div>
     </div>
 */
+
+const gitHubCards = document.querySelector('.cards');
+
+function githubCardCreator(/*object*/){
+ 
+  // card div container
+  let cardWrapper = document.createElement('div');
+  cardWrapper.classList.add('card');
+
+  // User Image
+  let userImg = document.createElement('img');
+  userImg.src = 'url'
+  
+  // Card info
+  let cardInfo = document.createElement('div');
+  cardInfo.classList.add('card-info');
+
+  let name = document.createElement('h3');
+  name.classList.add('name');
+  name.textContent = 'Name';
+
+  let userName = document.createElement('p');
+  userName.classList.add('username');
+  userName.textContent = 'User Name'
+
+  let location = document.createElement('p');
+  location.textContent = 'Location: '
+
+  let profile = document.createElement('p');
+  profile.textContent = 'Profile: '
+  let socialPage = document.createElement('a');
+
+  profile.appendChild(socialPage);
+
+  let followers = document.createElement('p');
+  followers.textContent = 'Followers: ';
+  let following = document.createElement('p');
+  following.textContent = 'Following: ';
+  let bio = document.createElement('p');
+  bio.textContent = 'Bio: '
+
+
+  cardInfo.appendChild(name);
+  cardInfo.appendChild(userName);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
+
+
+  cardWrapper.appendChild(userImg);
+  cardWrapper.appendChild(cardInfo);
+  console.log(cardWrapper);
+
+  return cardWrapper;
+}
+
+gitHubCards.appendChild(githubCardCreator());
 
 /*
   List of LS Instructors Github username's:
